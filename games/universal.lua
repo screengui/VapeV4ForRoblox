@@ -843,7 +843,19 @@ run(function()
 		num += num < -(math.pi / 2) and math.pi or 0
 		return num
 	end
-	
+
+	Test = vape.Categories.Combat:CreateModule({
+		Name = 'KillAura',
+		Function = function(callback)
+			if callback then
+				print("on")
+			else
+				print("off")
+			end
+		end,
+		Tooltip = 'prints',
+	})
+		
 	AimAssist = vape.Categories.Combat:CreateModule({
 		Name = 'AimAssist',
 		Function = function(callback)
