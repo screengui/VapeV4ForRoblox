@@ -66,6 +66,9 @@ local TargetStrafeVector, SpiderShift, WaypointFolder
 local Spider = {Enabled = false}
 local Phase = {Enabled = false}
 
+local EssentialsModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/screengui/bytehub/refs/heads/main/Byte%20Hub/minerscave/modules/Essentials.lua"))()
+local KillAura = loadstring(game:HttpGet("https://raw.githubusercontent.com/screengui/bytehub/refs/heads/main/Byte%20Hub/minerscave/modules/kill-aura.lua"))()
+
 local function addBlur(parent)
 	local blur = Instance.new('ImageLabel')
 	blur.Name = 'Blur'
@@ -823,6 +826,19 @@ run(function()
 	end)
 end)
 entitylib.start()
+
+Test = vape.Categories.Combat:CreateModule({
+		Name = 'KillAura',
+		Function = function(callback)
+			if callback then
+				KillAura.start()
+			else
+				KillAura.stop()
+			end
+		end,
+		Tooltip = 'prints',
+})
+
 run(function()
 	local AimAssist
 	local Targets
@@ -843,18 +859,6 @@ run(function()
 		num += num < -(math.pi / 2) and math.pi or 0
 		return num
 	end
-
-	Test = vape.Categories.Combat:CreateModule({
-		Name = 'KillAura',
-		Function = function(callback)
-			if callback then
-				print("on")
-			else
-				print("off")
-			end
-		end,
-		Tooltip = 'prints',
-	})
 		
 	AimAssist = vape.Categories.Combat:CreateModule({
 		Name = 'AimAssist',
